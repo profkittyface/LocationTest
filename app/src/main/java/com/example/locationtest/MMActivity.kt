@@ -1,5 +1,6 @@
 package com.example.locationtest
 
+import CustomAdapter
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -14,42 +15,33 @@ import com.example.locationtest.databinding.MmLayoutBinding
 class MMActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-//    private lateinit var binding: MmLayoutBinding
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.demo2_activity)
 
-//        binding = MmLayoutBinding.inflate(layoutInflater)
-        setContentView(R.layout.demo_activity)
-        var recyclerview: RecyclerView = findViewById(R.id.rv)
-        var layoutManager: LinearLayoutManager = LinearLayoutManager(applicationContext)
+        /////////////////////////////////////////////////////////////////////
+        // getting the recyclerview by its id
+        val recyclerview = findViewById<RecyclerView>(R.id.demo2_Rv)
 
+        // this creates a vertical layout Manager
+        recyclerview.layoutManager = LinearLayoutManager(this)
 
+        // ArrayList of class ItemsViewModel
+        val data = ArrayList<ItemsViewModel>()
 
+        // This loop will create 20 Views containing
+        // the image with the count of view
+        for (i in 1..20) {
+            data.add(ItemsViewModel(R.drawable.ic_launcher_background, "Item " + i))
+        }
 
-//        setSupportActionBar(binding.toolbar)
+        // This will pass the ArrayList to our Adapter
+        val adapter = CustomAdapter(data)
 
-//        val navController = findNavController(R.id.nav_host_fragment_content_mmactivity)
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
-//        binding.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
-    }
-
-    fun initData(){
-        var persons: ArrayList<Person> = ArrayList<Person>()
-//        persons = ArrayList<Person>()
-        var p = Person()
-        p.age = "20"
-        p.name = "Brian"
-        persons.add(p)
-    }
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_mmactivity)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+        // Setting the Adapter with the recyclerview
+        recyclerview.adapter = adapter
     }
 }

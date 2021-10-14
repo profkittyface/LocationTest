@@ -11,18 +11,18 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RVAdapter : RecyclerView.Adapter<RVAdapter.PersonViewHolder?>() {
     class PersonViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var cv: CardView
-        var personName: TextView
-        var personAge: TextView
-        var personPhoto: ImageView
-
-        init {
-            cv = itemView.findViewById(R.id.)
-            val recycler_view = findViewById<RecyclerView>(R.id.)
-            personName = itemView.findViewById(R.id.)
-            personAge = itemView.findViewById(R.id.person_age)
-            personPhoto = itemView.findViewById(R.id.person_photo) as ImageView
-        }
+//        var cv: CardView
+//        var personName: TextView
+//        var personAge: TextView
+//        var personPhoto: ImageView
+//
+//        init {
+//            cv = itemView.findViewById(R.id.)
+//            val recycler_view = findViewById<RecyclerView>(R.id.)
+//            personName = itemView.findViewById(R.id.)
+//            personAge = itemView.findViewById(R.id.person_age)
+//            personPhoto = itemView.findViewById(R.id.person_photo) as ImageView
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
